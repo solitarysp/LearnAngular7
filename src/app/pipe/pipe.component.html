@@ -1,0 +1,15 @@
+<h1>
+  pipe works!
+</h1>
+
+
+<p>The Le Thanh birthday is {{ birthday | date:"MM/dd/yyyy" }} </p>
+
+<p (click)="formatBirthday ? formatBirthday=undefined : formatBirthday ='MM/dd/yyyy'">The Le Thanh birthday multil is {{
+  birthday | date:formatBirthday
+  }} </p>
+
+
+<p>======================== chaining-pipes ================================</p>
+
+<p>The Le Thanh birthday is {{ birthday | date:'fullDate' | uppercase }} </p>

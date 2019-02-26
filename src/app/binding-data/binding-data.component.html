@@ -1,0 +1,22 @@
+<h1>
+  binding-data
+
+</h1>
+
+<div>
+  <app-biding1-way></app-biding1-way>
+
+</div>
+<div>===================================================================</div>
+<div>
+  <app-biding-view-to-data (bidingViewToData)="bidingViewToData=$event"></app-biding-view-to-data>
+  <div> Data {{bidingViewToData}}</div>
+  <button (click)="bidingViewToData=bidingViewToData+12345"> Change Value At Data</button>
+</div>
+
+<div>===================================================================</div>
+<div>
+  <app-two-way [(size)]="sizeTowData"></app-two-way>
+  <div> Data {{sizeTowData}}</div>
+  <button (click)="sizeTowData=sizeTowData+12345"> Change Value At Data</button>
+</div>

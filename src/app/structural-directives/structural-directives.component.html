@@ -1,0 +1,48 @@
+<h1>
+  structural-directives works!
+</h1>
+<div>========================= IF ================================</div>
+<button (click)="bienIf = !bienIf "> Click change if</button>
+
+<div *ngIf="bienIf">
+  đây là structural directive if
+  <div>
+    đây tag con của structural directive if
+  </div>
+</div>
+
+<ng-template [ngIf]="bienIf">
+  <div>
+    đây là structural directive if
+    <div>
+      đây tag con của structural directive if
+    </div>
+  </div>
+</ng-template>
+
+<div>========================= FOR ================================</div>
+
+<div *ngFor="let item of forList; trackBy: trackById; let i=index ; let odd=odd;" [class.odd]="odd">
+  ({{i}}) {{item}}
+</div>
+<div>== template =======</div>
+
+<ng-template ngFor let-item [ngForOf]="forList" let-i="index" let-odd="odd" [ngForTrackBy]="trackById">
+  <div [class.odd]="odd">({{i}}) {{item}}</div>
+</ng-template>
+
+<div>========================= NgSwitch ================================</div>
+<div [ngSwitch]="switchValue">
+  <div *ngSwitchCase="1"> value là 1</div>
+  <div *ngSwitchCase="2"> value là 2</div>
+</div>
+<div>== template =======</div>
+<div [ngSwitch]="switchValue">
+
+  <ng-template [ngSwitchCase]="1">
+    <div> value là 1</div>
+  </ng-template>
+  <ng-template [ngSwitchCase]="2">
+    <div> value là 2</div>
+  </ng-template>
+</div>

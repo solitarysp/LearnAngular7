@@ -7,7 +7,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class BidingViewToDataComponent implements OnInit {
 
-  @Output() bidingViewToData: EventEmitter = new EventEmitter();
+  @Output() bidingViewToData: EventEmitter<any> = new EventEmitter();
   dataView;
 
   constructor() {

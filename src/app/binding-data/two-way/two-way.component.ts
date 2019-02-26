@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class TwoWayComponent implements OnInit {
   @Input() size;
-  @Output() sizeChange: EventEmitter = new EventEmitter();
+  @Output() sizeChange: EventEmitter<any> = new EventEmitter();
 
   constructor() {
   }

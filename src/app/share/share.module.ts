@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HighlightDirective} from './highlight.directive';
 import {StructuralDirectivesDirective} from './structural-directives.directive';
-import { Pipex2Pipe } from './pipex2.pipe';
+import {PipeMultiplyPipe} from './pipeMultiply.pipe';
 
-const declarations = [HighlightDirective, StructuralDirectivesDirective];
+const declarations = [HighlightDirective, StructuralDirectivesDirective, PipeMultiplyPipe];
 
 @NgModule({
-  declarations: [declarations, Pipex2Pipe],
+  declarations: [declarations],
   imports: [
     CommonModule
   ], exports: [declarations]

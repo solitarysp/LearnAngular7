@@ -13,3 +13,7 @@
 <p>======================== chaining-pipes ================================</p>
 
 <p>The Le Thanh birthday is {{ birthday | date:'fullDate' | uppercase }} </p>
+
+<p>======================== Custom * 2 ================================</p>
+
+<p>The Le Thanh birthday is {{ 100 | pipeMultiply:{value: 100}  }} </p>

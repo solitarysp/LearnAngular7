@@ -6,7 +6,9 @@ const routes: Routes = [
   {path: 'binding-data', loadChildren: './binding-data/binding-data.module#BindingDataModule'},
   {path: 'structural-directives', loadChildren: './structural-directives/structural-directives.module#StructuralDirectivesModule'},
   {path: 'pipe', loadChildren: './pipe/pipe.module#PipeModule'},
-  {path: 'teamplate-syntax', loadChildren: './teamplate-syntax/teamplate-syntax.module#TeamplateSyntaxModule'}
+  {path: 'teamplate-syntax', loadChildren: './teamplate-syntax/teamplate-syntax.module#TeamplateSyntaxModule'},
+  {path: 'forms', loadChildren: './forms-example/forms-example.module#FormsExampleModule'}
+
 ];
 const config: ExtraOptions = {
   useHash: true

@@ -1,7 +1,9 @@
 <div>
-  The pipe operator ( | )
+  <p>========================== The pipe operator ( | ) ==========================</p>
 
-  <div>
+
+  <input placeholder=" Hide / Show pipe" type="checkbox" [(ngModel)]="showPipe">
+  <div *ngIf="showPipe">
     <div>
       Title through a pipe lowercase:
       {{'Lê Văn Thành' |  lowercase}}
@@ -24,5 +26,32 @@
       {{'Lê Văn Thành' | lowercase | uppercase}}
     </div>
 
+  </div>
+</div>
+<p>========================== operator ( ?. ) ==========================</p>
+<input placeholder=" Hide / Show pipe" type="checkbox" [(ngModel)]="operatorHoiCham">
+
+<div *ngIf="operatorHoiCham">
+  The safe navigation operator ( ?. ) and null property paths
+  <div>
+    employee 1
+    <div>
+      Như bình thường kiểm tra null employee && employee.name
+      {{employeeNotInit && employeeNotInit?.name}}
+    </div>
+    <div>
+      Name ( kiểm tra ? nếu Object đó chưa đc init, ? sẽ giúp chúng ta error lỗi chưa tạo
+      {{employeeNotInit?.name}}
+    </div>
+
+    <div>
+      Chain mội chuỗi ?
+      {{employee?.classz?.id}}
+    </div>
+
+    <div>
+      Show value
+      {{employee?.id}}
+    </div>
   </div>
 </div>

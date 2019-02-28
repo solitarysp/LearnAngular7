@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-expression-operators',
@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpressionOperatorsComponent implements OnInit {
 
-  constructor() { }
+  // ===
+  showPipe = false;
+  operatorHoiCham = false;
+  employeeNotInit: Employee;
+  employee: Employee;
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    this.employee = new Employee();
+    this.employee.id = 1;
+  }
+
+}
+
+class Employee {
+  id;
+  name;
+  classz: Classz;
+}
+
+class Classz {
+  id;
 }

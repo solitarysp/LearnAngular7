@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class PipeComponent implements OnInit {
   birthday = new Date();
   formatBirthday;
+  listNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   constructor() {
   }
@@ -15,4 +16,11 @@ export class PipeComponent implements OnInit {
   ngOnInit() {
   }
 
+  addNumber() {
+    this.listNumber.push(new Date().getMilliseconds());
+  }
+
+  addNumberNewArray() {
+    this.listNumber = this.listNumber.concat(new Date().getMilliseconds());
+  }
 }

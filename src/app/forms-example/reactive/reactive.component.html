@@ -1,5 +1,113 @@
-<label>
-  Name:
-  <input required type="text" [formControl]="name">
-</label>
-Name : {{name.valid}}
+<div>
+  <div>
+    Name:
+    <input required type="text" [formControl]="name">
+    Name valid : {{name.valid}}
+  </div>
+  <button (click)="name.setValue('default')">Set value</button>
+</div>
+
+<p>====================================== Grouping =====================================</p>
+<div>
+  Grouping form controls
+  <form [formGroup]="user" (ngSubmit)="submitUser()">
+
+    <label>
+      First Name:
+      <input required type="text" formControlName="firstName">
+    </label>
+
+    <label>
+      Last Name:
+      <input required type="text" formControlName="lastName">
+    </label>
+
+    <button type="submit" [disabled]="!user.valid">Submit</button>
+  </form>
+</div>
+<p>====================================== nested form groups =====================================</p>
+<div>
+  nested form groups
+  <form [formGroup]="usernestedForm" (ngSubmit)="submitNestedForm()">
+
+    <label>
+      First Name:
+      <input required type="text" formControlName="firstName">
+    </label>
+
+    <label>
+      Last Name:
+      <input required type="text" formControlName="lastName">
+    </label>
+
+    <div formGroupName="address">
+      <h3>Address</h3>
+
+      <label>
+        Street:
+        <input type="text" formControlName="street">
+      </label>
+
+      <label>
+        City:
+        <input type="text" formControlName="city">
+      </label>
+
+      <label>
+        State:
+        <input type="text" formControlName="state">
+      </label>
+
+      <label>
+        Zip Code:
+        <input type="text" formControlName="zip">
+      </label>
+    </div>
+
+    <button type="submit" [disabled]="!user.valid">Submit</button>
+  </form>
+</div>
+
+
+<p>====================================== Generating form controls with FormBuilder =====================================</p>
+<div>
+  nested form groups
+  <form [formGroup]="usernestedFormFormBuilder" (ngSubmit)="submitNestedFormFormBuilder()">
+
+    <label>
+      First Name:
+      <input required type="text" formControlName="firstName">
+    </label>
+
+    <label>
+      Last Name:
+      <input required type="text" formControlName="lastName">
+    </label>
+
+    <div formGroupName="address">
+      <h3>Address</h3>
+
+      <label>
+        Street:
+        <input type="text" formControlName="street">
+      </label>
+
+      <label>
+        City:
+        <input type="text" formControlName="city">
+      </label>
+
+      <label>
+        State:
+        <input type="text" formControlName="state">
+      </label>
+
+      <label>
+        Zip Code:
+        <input type="text" formControlName="zip">
+      </label>
+    </div>
+
+    <button type="submit" [disabled]="!user.valid">Submit</button>
+  </form>
+</div>

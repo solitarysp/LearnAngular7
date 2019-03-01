@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Student} from '../../share/model/student';
 import {Address} from '../../share/model/address';
 
@@ -27,8 +27,8 @@ export class ReactiveComponent implements OnInit {
   });
 
   usernestedFormFormBuilder = this.fb.group({
-    firstName: [''],
-    lastName: [''],
+    firstName: ['', Validators.required],
+    lastName: ['', [Validators.required, Validators.minLength(5)]],
     address: this.fb.group({
       street: [''],
       city: [''],
@@ -69,8 +69,12 @@ export class ReactiveComponent implements OnInit {
   }
 
   submitNestedFormFormBuilder() {
+    console.log(this.usernestedFormFormBuilder.controls.lastName.errors);
     this.usernestedForm.setValue(this.usernestedFormFormBuilder.value);
-    console.log(this.usernestedFormFormBuilder.value);
 
+  }
+
+  get f() {
+    return this.usernestedFormFormBuilder.controls;
   }
 }

@@ -7,9 +7,10 @@ import {SetupInReactiveFormsComponent} from './setup-in-reactive-forms/setup-in-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SetupInTemplateDrivenFormsComponent} from './setup-in-template-driven-forms/setup-in-template-driven-forms.component';
 import {ReactiveComponent} from './reactive/reactive.component';
+import { ReactiveValidateComponent } from './reactive/reactive-validate/reactive-validate.component';
 
 @NgModule({
-  declarations: [FormsExampleComponent, SetupInReactiveFormsComponent, SetupInTemplateDrivenFormsComponent, ReactiveComponent,],
+  declarations: [FormsExampleComponent, SetupInReactiveFormsComponent, SetupInTemplateDrivenFormsComponent, ReactiveComponent, ReactiveValidateComponent,],
   imports: [
     CommonModule,
     FormsExampleRoutingModule,

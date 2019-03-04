@@ -1,0 +1,25 @@
+<p>
+  dynamic-controls-using-form-arrays works!
+</p>
+
+<form [formGroup]="user">
+  <ng-container *ngIf="aliases.value">
+    {{aliases.value | json }}
+
+  </ng-container>
+  <div formGroupName="aliases">
+    <h3>Aliases</h3>
+    <p>
+      Form Status: {{ user.valid }}
+    </p>
+    <button (click)="addArray(aliases.controls.length+1)">Add Alias</button>
+    <div *ngFor="let alia of aliases.controls; let i=index">
+      <!-- The repeated alias template -->
+      <label>
+        Alias:
+        <input type="text" [formControlName]="i">
+      </label>
+    </div>
+
+  </div>
+</form>

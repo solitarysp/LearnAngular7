@@ -1,3 +1,5 @@
+<h1>Template-driven validation</h1>
+
 <form #user="ngForm">
 
   <div class="form-group col-xl-12">
@@ -28,3 +30,32 @@
   <button type="submit" [disabled]="!user.form.valid" class="btn btn-success">Submit</button>
 
 </form>
+
+<h1>Reactive form validation</h1>
+
+
+<form [formGroup]="studentReactive">
+  <div class="form-group col-xl-12">
+    <label for="name">Name</label>
+    <input name="name" appForbiddenName formControlName="firstName">
+
+    <div *ngIf="getFbFirstName.invalid && (getFbFirstName.dirty || getFbFirstName.touched)"
+         class="alert alert-danger">
+      <div *ngIf="getStudentReactive.get('firstName').errors['required']">
+        Name is required.
+      </div>
+      <div *ngIf="getFbFirstName.errors['minlength']">
+        Name must be at least 10 characters long and actual  {{getFbFirstName.errors['minlength']['actualLength']}}
+      </div>
+      Name validate: {{getFbFirstName.errors | json}}
+      <div *ngIf="getFbFirstName.errors['forbiddenName']">
+        Name cannot be Bob.
+      </div>
+      <div *ngIf="getFbFirstName.errors['email']">
+        Không phải email
+      </div>
+
+    </div>
+  </div>
+</form>
+Form valite : {{studentReactive.errors | json}}

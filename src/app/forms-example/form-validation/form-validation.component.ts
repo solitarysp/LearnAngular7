@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Student} from '../../share/model/student';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {forbiddenNameValidator, identityRevealedValidator} from '../../share/forbidden-validator.directive';
+import {UniqueAlterEgoValidator} from '../../share/service/user.service';
 
 @Component({
   selector: 'app-form-validation',
@@ -24,11 +25,11 @@ export class FormValidationComponent implements OnInit {
       Validators.required,
       Validators.minLength(10),
       forbiddenNameValidator(/bob/i)
-    ])
+    ], [this.validator.validate.bind(this.validator)])
   }, {validators: identityRevealedValidator});
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private validator: UniqueAlterEgoValidator) {
   }
 
   ngOnInit() {

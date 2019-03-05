@@ -9,9 +9,10 @@ import {SetupInTemplateDrivenFormsComponent} from './setup-in-template-driven-fo
 import {ReactiveComponent} from './reactive/reactive.component';
 import { ReactiveValidateComponent } from './reactive/reactive-validate/reactive-validate.component';
 import { DynamicControlsUsingFormArraysComponent } from './reactive/dynamic-controls-using-form-arrays/dynamic-controls-using-form-arrays.component';
+import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 
 @NgModule({
-  declarations: [FormsExampleComponent, SetupInReactiveFormsComponent, SetupInTemplateDrivenFormsComponent, ReactiveComponent, ReactiveValidateComponent, DynamicControlsUsingFormArraysComponent,],
+  declarations: [FormsExampleComponent, SetupInReactiveFormsComponent, SetupInTemplateDrivenFormsComponent, ReactiveComponent, ReactiveValidateComponent, DynamicControlsUsingFormArraysComponent, TemplateDrivenComponent,],
   imports: [
     CommonModule,
     FormsExampleRoutingModule,

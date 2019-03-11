@@ -4,10 +4,12 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
+import {TestMultilBootstrappingComponent} from './test-multil-bootstrapping/test-multil-bootstrapping.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestMultilBootstrappingComponent
   ],
   imports: [
     BrowserModule,

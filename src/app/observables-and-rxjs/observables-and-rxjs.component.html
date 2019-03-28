@@ -1,0 +1,7 @@
+<div>
+  <div>observables</div>
+  <button (click)="regMsg()">Đăng ký nhận msg</button>
+  <ng-container *ngFor="let msg of msgs">
+    <div>{{msg}}</div>
+  </ng-container>
+</div>

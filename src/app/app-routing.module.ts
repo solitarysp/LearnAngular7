@@ -7,7 +7,8 @@ const routes: Routes = [
   {path: 'structural-directives', loadChildren: './structural-directives/structural-directives.module#StructuralDirectivesModule'},
   {path: 'pipe', loadChildren: './pipe/pipe.module#PipeModule'},
   {path: 'teamplate-syntax', loadChildren: './teamplate-syntax/teamplate-syntax.module#TeamplateSyntaxModule'},
-  {path: 'forms', loadChildren: './forms-example/forms-example.module#FormsExampleModule'}
+  {path: 'forms', loadChildren: './forms-example/forms-example.module#FormsExampleModule'},
+  {path: 'observables-and-rxjs', loadChildren: './observables-and-rxjs/observables-and-rxjs.module#ObservablesAndRxjsModule'}
 
 ];
 const config: ExtraOptions = {

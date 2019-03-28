@@ -18,7 +18,9 @@ export class ObservablesAndRxjsComponent implements OnInit {
       const timeInter = setInterval(() => {
         subscriber.next('msg ' + ++this.a);
       }, 1000);
-      subscriber.complete();
+      setTimeout(() => {
+        subscriber.complete();
+      }, 10000);
 
     });
   }
@@ -32,8 +34,8 @@ export class ObservablesAndRxjsComponent implements OnInit {
       this.msgs.push(value);
     }, error1 => {
       console.log(error1);
-    },() => {
-      console.log('done')
+    }, () => {
+      console.log('done');
     });
   }
 

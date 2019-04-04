@@ -21,7 +21,7 @@ export class DynamicControlsUsingFormArraysComponent implements OnInit {
     this.aliases.push(this.fb.control(value));
   }
 
-  private get aliases() {
+  get aliases() {
     return this.user.get('aliases') as FormArray;
   }
 

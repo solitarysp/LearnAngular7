@@ -5,9 +5,10 @@ import { ObservablesAndRxjsRoutingModule } from './observables-and-rxjs-routing.
 import { ObservablesAndRxjsComponent } from './observables-and-rxjs.component';
 import { MulticastingComponent } from './multicasting/multicasting.component';
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
+import { RxJSLibraryComponent } from './rx-jslibrary/rx-jslibrary.component';
 
 @NgModule({
-  declarations: [ObservablesAndRxjsComponent, MulticastingComponent, ErrorHandlingComponent],
+  declarations: [ObservablesAndRxjsComponent, MulticastingComponent, ErrorHandlingComponent, RxJSLibraryComponent],
   imports: [
     CommonModule,
     ObservablesAndRxjsRoutingModule

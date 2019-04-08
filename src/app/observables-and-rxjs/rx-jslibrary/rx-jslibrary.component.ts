@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {from, fromEvent, interval} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
 import {of} from 'rxjs/internal/observable/of';
-import {filter, flatMap, map} from 'rxjs/operators';
+import {catchError, filter, flatMap, map} from 'rxjs/operators';
 import {concat} from 'rxjs/internal/observable/concat';
 import {pipe} from 'rxjs/internal/util/pipe';
 
@@ -130,16 +130,33 @@ export class RxJSLibraryComponent implements OnInit {
       filter((n: number) => n % 2 !== 0),
       map(n => n * n)
     );
- /*   // hoặc sử dụng ngắn gọn
-    nums.pipe(
-      filter((n: number) => n % 2 !== 0),
-      map(n => n * n)
-    );
-*/
+    /*   // hoặc sử dụng ngắn gọn
+       nums.pipe(
+         filter((n: number) => n % 2 !== 0),
+         map(n => n * n)
+       );
+   */
 // Create an Observable that will run the filter and map functions
     const squareOdd = squareOddVals(nums);
     // đầu vào của map là một observable
     console.log('createPipe');
     squareOdd.subscribe(x => console.log(x));
+  }
+
+  createCatchErrorHanding() {
+    const apiData = ajax('/assets/jsonFake/fakeValidateEmail.json1').pipe(
+      map(res => {
+        console.log(res.response.data);
+        if (!res.response.data) {
+          throw new Error('Value expected!');
+        }
+        console.log('return');
+        return res.response;
+      }),
+    );
+    apiData.subscribe(value => {
+        console.log('thành công');
+      },
+      error1 => console.log('error catch at khi subscribe'));
   }
 }

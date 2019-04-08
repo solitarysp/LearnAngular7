@@ -4,6 +4,7 @@ import {ajax} from 'rxjs/ajax';
 import {of} from 'rxjs/internal/observable/of';
 import {filter, flatMap, map} from 'rxjs/operators';
 import {concat} from 'rxjs/internal/observable/concat';
+import {pipe} from 'rxjs/internal/util/pipe';
 
 @Component({
   selector: 'app-rxjs-library',
@@ -119,5 +120,26 @@ export class RxJSLibraryComponent implements OnInit {
     // đầu vào của map là một observable
     console.log('createAOperatorFlatMap');
     squareValues.subscribe(x => console.log(x));
+  }
+
+  createPipe() {
+// return về một observable
+    const nums = of(1, 2, 3, 4);
+
+    const squareOddVals = pipe(
+      filter((n: number) => n % 2 !== 0),
+      map(n => n * n)
+    );
+ /*   // hoặc sử dụng ngắn gọn
+    nums.pipe(
+      filter((n: number) => n % 2 !== 0),
+      map(n => n * n)
+    );
+*/
+// Create an Observable that will run the filter and map functions
+    const squareOdd = squareOddVals(nums);
+    // đầu vào của map là một observable
+    console.log('createPipe');
+    squareOdd.subscribe(x => console.log(x));
   }
 }

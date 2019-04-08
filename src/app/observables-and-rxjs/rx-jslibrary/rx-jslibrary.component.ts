@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {from, fromEvent, interval} from 'rxjs';
+import {from, fromEvent, interval, timer} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
 import {of} from 'rxjs/internal/observable/of';
-import {catchError, filter, flatMap, map} from 'rxjs/operators';
+import {catchError, filter, flatMap, map, retry, retryWhen} from 'rxjs/operators';
 import {concat} from 'rxjs/internal/observable/concat';
 import {pipe} from 'rxjs/internal/util/pipe';
+import {delayWhen} from 'rxjs/internal/operators/delayWhen';
+import {tap} from 'rxjs/internal/operators/tap';
 
 @Component({
   selector: 'app-rxjs-library',
@@ -153,6 +155,57 @@ export class RxJSLibraryComponent implements OnInit {
         console.log('return');
         return res.response;
       }),
+    );
+    apiData.subscribe(value => {
+        console.log('thành công');
+      },
+      error1 => console.log('error catch at khi subscribe'));
+  }
+
+  createRetryObservable() {
+    const apiData = ajax('/assets/jsonFake/fakeValidateEmail.json1').pipe(
+      retry(3),
+      map(res => {
+        console.log(res.response.data);
+        if (!res.response.data) {
+          throw new Error('Value expected!');
+        }
+        console.log('return');
+        return res.response;
+      }),
+      catchError(err => {
+        console.log('error');
+        return of([]);
+      })
+    );
+    apiData.subscribe(value => {
+        console.log('thành công');
+      },
+      error1 => console.log('error catch at khi subscribe'));
+  }
+
+  createRetryWhenObservable() {
+    const apiData = ajax('/assets/jsonFake/fakeValidateEmail.json1').pipe(
+      retry(3),
+      retryWhen(errors =>
+        errors.pipe(
+          tap(val => console.log(`Value ${val} was too high!`)),
+          //restart in 5 seconds
+          delayWhen(val => timer(val * 1000))
+        )
+      ),
+      map(res => {
+        console.log(res.response.data);
+        if (!res.response.data) {
+          throw new Error('Value expected!');
+        }
+        console.log('return');
+        return res.response;
+      }),
+      catchError(err => {
+        console.log('error');
+        return of([]);
+      })
     );
     apiData.subscribe(value => {
         console.log('thành công');

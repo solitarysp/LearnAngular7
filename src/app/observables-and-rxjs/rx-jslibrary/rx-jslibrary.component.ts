@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {from, fromEvent, interval} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
 import {of} from 'rxjs/internal/observable/of';
-import {filter, map} from 'rxjs/operators';
+import {filter, flatMap, map} from 'rxjs/operators';
 import {concat} from 'rxjs/internal/observable/concat';
 
 @Component({
@@ -103,6 +103,21 @@ export class RxJSLibraryComponent implements OnInit {
     const squareValues = concat(nums, sourceTwo);
     // đầu vào của map là một observable
     console.log('createAOperatorConcat');
+    squareValues.subscribe(x => console.log(x));
+  }
+
+  // flatMapp chính là alias  của mergeMap
+  createAOperatorFlatMap() {
+// return về một observable
+    const nums = of('a ', 'b ', 'c ');
+    const sourceTwo = of(4, 5, 6);
+
+// map return về một observable
+    const squareValues = nums.pipe(flatMap((value) => {
+      return interval(1000).pipe(map(i => value + i));
+    }));
+    // đầu vào của map là một observable
+    console.log('createAOperatorFlatMap');
     squareValues.subscribe(x => console.log(x));
   }
 }

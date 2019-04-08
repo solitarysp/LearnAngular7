@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {from, fromEvent, interval} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
+import {of} from 'rxjs/internal/observable/of';
+import {filter, map} from 'rxjs/operators';
+import {concat} from 'rxjs/internal/observable/concat';
 
 @Component({
   selector: 'app-rxjs-library',
@@ -20,9 +23,15 @@ export class RxJSLibraryComponent implements OnInit {
     const data = from(fetch('/assets/jsonFake/fakeValidateEmail.json'));
 // Subscribe to begin listening for async result
     data.subscribe({
-      next(response) { console.log(response); },
-      error(err) { console.error('Error: ' + err); },
-      complete() { console.log('Completed'); }
+      next(response) {
+        console.log(response);
+      },
+      error(err) {
+        console.error('Error: ' + err);
+      },
+      complete() {
+        console.log('Completed');
+      }
     });
   }
 
@@ -61,4 +70,39 @@ export class RxJSLibraryComponent implements OnInit {
     apiData.subscribe(res => console.log(res.status, res.response));
   }
 
+//////////////////////////////// Operators //////////////////////////////////////
+  createAOperatorMap() {
+// return về một observable
+    const nums = of(1, 2, 3);
+// map return về một observable
+    const squareValues = map((val: number) => val);
+    // đầu vào của map là một observable
+    const squaredNums = squareValues(nums);
+    console.log('createAOperatorMap');
+
+    squaredNums.subscribe(x => console.log(x));
+  }
+
+  createAOperatorFilter() {
+// return về một observable
+    const nums = of(1, 2, 3);
+// map return về một observable
+    const squareValues = filter((val: number) => val > 1);
+    // đầu vào của map là một observable
+    const squaredNums = squareValues(nums);
+    console.log('createAOperatorFilter');
+    squaredNums.subscribe(x => console.log(x));
+  }
+
+  createAOperatorConcat() {
+// return về một observable
+    const nums = of(1, 2, 3);
+    const sourceTwo = of(4, 5, 6);
+
+// map return về một observable
+    const squareValues = concat(nums, sourceTwo);
+    // đầu vào của map là một observable
+    console.log('createAOperatorConcat');
+    squareValues.subscribe(x => console.log(x));
+  }
 }

@@ -9,10 +9,11 @@ import {RxJSLibraryComponent} from './rx-jslibrary/rx-jslibrary.component';
 import {ObservablesInAngularComponent} from './observables-in-angular/observables-in-angular.component';
 import {PracticalObservableUsageComponent} from './practical-observable-usage/practical-observable-usage.component';
 import {FormsModule} from '@angular/forms';
+import { ObservablesComparedComponent } from './observables-compared/observables-compared.component';
 
 @NgModule({
   declarations: [ObservablesAndRxjsComponent, MulticastingComponent, ErrorHandlingComponent, RxJSLibraryComponent,
-    ObservablesInAngularComponent, PracticalObservableUsageComponent],
+    ObservablesInAngularComponent, PracticalObservableUsageComponent, ObservablesComparedComponent],
   imports: [
     CommonModule,
     FormsModule,

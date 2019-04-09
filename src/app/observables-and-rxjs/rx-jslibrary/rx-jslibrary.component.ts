@@ -8,6 +8,7 @@ import {pipe} from 'rxjs/internal/util/pipe';
 import {delayWhen} from 'rxjs/internal/operators/delayWhen';
 import {tap} from 'rxjs/internal/operators/tap';
 import {mergeMap} from 'rxjs/internal/operators/mergeMap';
+import {ResponseBE} from '../../share/model/response-be';
 
 @Component({
   selector: 'app-rxjs-library',
@@ -245,6 +246,16 @@ export const genericRetryStrategy = ({
       ) {
         return throwError(error);
       }
+
+      const apiData = ajax('/assets/jsonFake/regLogin.json');
+      apiData.subscribe((value) => {
+        const responseBE: ResponseBE = value.response;
+        if (responseBE.status === 200) {
+          console.log('login lai thanh cong');
+        }
+      }, error1 => {
+        console.log('error lỗi khi call api trong Retry ');
+      });
       console.log(
         `Attempt ${retryAttempt}: retrying in ${retryAttempt *
         scalingDuration}ms`

@@ -28,7 +28,7 @@ export class PracticalObservableUsageComponent implements OnInit {
     const searchBox = document.getElementById('search-box');
     const typeahead = fromEvent(searchBox, 'input').pipe(
       map((e: KeyboardEvent) => {
-        return e.target.value;
+        return (e.target as HTMLTextAreaElement).value;
       }),
       filter(text => text.length > 2),
       debounceTime(1000),

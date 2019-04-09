@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {from, fromEvent, interval, timer} from 'rxjs';
+import {from, fromEvent, interval, Observable, throwError, timer} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
 import {of} from 'rxjs/internal/observable/of';
-import {catchError, filter, flatMap, map, retry, retryWhen} from 'rxjs/operators';
+import {catchError, filter, finalize, flatMap, map, retry, retryWhen} from 'rxjs/operators';
 import {concat} from 'rxjs/internal/observable/concat';
 import {pipe} from 'rxjs/internal/util/pipe';
 import {delayWhen} from 'rxjs/internal/operators/delayWhen';
 import {tap} from 'rxjs/internal/operators/tap';
+import {mergeMap} from 'rxjs/internal/operators/mergeMap';
 
 @Component({
   selector: 'app-rxjs-library',
@@ -186,14 +187,24 @@ export class RxJSLibraryComponent implements OnInit {
 
   createRetryWhenObservable() {
     const apiData = ajax('/assets/jsonFake/fakeValidateEmail.json1').pipe(
-      retry(3),
+      /*
+       // cứ 5s retry 1 lần, k giới hạn
       retryWhen(errors =>
-        errors.pipe(
-          tap(val => console.log(`Value ${val} was too high!`)),
-          //restart in 5 seconds
-          delayWhen(val => timer(val * 1000))
-        )
-      ),
+              errors.pipe(
+                tap(val => console.log(`Value ${val} was too high!`)),
+                // restart in 5 seconds
+                delayWhen(val => timer(val * 1000))
+              )
+            ),*/
+
+      // retry sau 1 khoảng thời gian và set max tối da số lần retry
+      retryWhen(errors =>
+        errors.pipe(genericRetryStrategy({
+            scalingDuration: 2000,
+            excludedStatusCodes: [500]
+          }
+        ))),
+
       map(res => {
         console.log(res.response.data);
         if (!res.response.data) {
@@ -213,3 +224,34 @@ export class RxJSLibraryComponent implements OnInit {
       error1 => console.log('error catch at khi subscribe'));
   }
 }
+
+export const genericRetryStrategy = ({
+                                       maxRetryAttempts = 3,
+                                       scalingDuration = 1000,
+                                       excludedStatusCodes = []
+                                     }: {
+  maxRetryAttempts?: number,
+  scalingDuration?: number,
+  excludedStatusCodes?: number[]
+} = {}) => (attempts: Observable<any>) => {
+  return attempts.pipe(
+    mergeMap((error, i) => {
+      const retryAttempt = i + 1;
+      // if maximum number of retries have been met
+      // or response is a status code we don't wish to retry, throw error
+      if (
+        retryAttempt > maxRetryAttempts ||
+        excludedStatusCodes.find(e => e === error.status)
+      ) {
+        return throwError(error);
+      }
+      console.log(
+        `Attempt ${retryAttempt}: retrying in ${retryAttempt *
+        scalingDuration}ms`
+      );
+      // retry after 1s, 2s, etc...
+      return timer(retryAttempt * scalingDuration);
+    }),
+    finalize(() => console.log('We are done!'))
+  );
+};

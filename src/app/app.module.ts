@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {TestMultilBootstrappingComponent} from './test-multil-bootstrapping/test-multil-bootstrapping.component';
+import {ForRootModuleModule} from './forRootModule/for-root-module.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,10 @@ import {TestMultilBootstrappingComponent} from './test-multil-bootstrapping/test
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+
+    AppRoutingModule,
+    // config name root
+    ForRootModuleModule.forRoot({userName: 'thanh'})
   ],
   providers: [],
   bootstrap: [AppComponent],

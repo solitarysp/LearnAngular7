@@ -8,7 +8,8 @@ const routes: Routes = [
   {path: 'pipe', loadChildren: './pipe/pipe.module#PipeModule'},
   {path: 'teamplate-syntax', loadChildren: './teamplate-syntax/teamplate-syntax.module#TeamplateSyntaxModule'},
   {path: 'forms', loadChildren: './forms-example/forms-example.module#FormsExampleModule'},
-  {path: 'observables-and-rxjs', loadChildren: './observables-and-rxjs/observables-and-rxjs.module#ObservablesAndRxjsModule'}
+  {path: 'observables-and-rxjs', loadChildren: './observables-and-rxjs/observables-and-rxjs.module#ObservablesAndRxjsModule'},
+  {path: 'customers', loadChildren: './customers/customer-list/customers.module#CustomersModule'}
 
 ];
 const config: ExtraOptions = {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {timeInterval} from 'rxjs/operators';
+import {UniqueAlterEgoValidator} from '../share/service/user.service';
 
 @Component({
   selector: 'app-observables-and-rxjs',
@@ -12,7 +13,8 @@ export class ObservablesAndRxjsComponent implements OnInit {
   msgsObservable: Observable<any>;
   a = 0;
 
-  constructor() {
+  constructor(private validator: UniqueAlterEgoValidator) {
+    this.validator.validate(null);
     this.msgsObservable = new Observable(subscriber => {
       this.msgs.push('bắt đầu chạy Observable msg');
       const timeInter = setInterval(() => {

@@ -14,5 +14,5 @@ jobs:
       - checkout
       - run: sudo npm install -g @angular/cli
       - run: sudo npm install
-      - run: sudo npm install node-sass@latest -g
+      - run: sudo npm install node-sass@latest
       - run: sudo npm run build

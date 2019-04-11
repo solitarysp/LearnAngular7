@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'teamplate-syntax', loadChildren: './teamplate-syntax/teamplate-syntax.module#TeamplateSyntaxModule'},
   {path: 'forms', loadChildren: './forms-example/forms-example.module#FormsExampleModule'},
   {path: 'observables-and-rxjs', loadChildren: './observables-and-rxjs/observables-and-rxjs.module#ObservablesAndRxjsModule'},
-  {path: 'customers', loadChildren: './customers/customer-list/customers.module#CustomersModule'}
+  {path: 'customers', loadChildren: './customers/customers.module#CustomersModule'}
 
 ];
 const config: ExtraOptions = {

@@ -18,4 +18,5 @@ jobs:
       - run: sudo npm install -g n
       - run: sudo n stable
       - run: npm rebuild node-sass
+      - run: sudo npm i node-sass@latest -g --unsafe-perm
       - run: sudo npm run build

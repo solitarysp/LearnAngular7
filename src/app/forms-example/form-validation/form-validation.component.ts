@@ -30,6 +30,7 @@ export class FormValidationComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private validator: UniqueAlterEgoValidator) {
+    console.log('ds')
   }
 
   ngOnInit() {

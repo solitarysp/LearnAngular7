@@ -21,7 +21,7 @@ import {ForRootModuleModule} from './forRootModule/for-root-module.module';
     ForRootModuleModule.forRoot({userName: 'thanh'})
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [TestMultilBootstrappingComponent, AppComponent],
 })
 export class AppModule {
 }

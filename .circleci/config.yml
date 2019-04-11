@@ -20,3 +20,6 @@ jobs:
       - run: sudo npm rebuild node-sass
       - run: sudo npm i node-sass@latest --unsafe-perm
       - run: sudo npm run build
+      - add_ssh_keys:
+         fingerprints:
+           - "5a:5b:a0:ae:50:50:49:74:34:6d:7f:b9:5c:1c:62:1f"

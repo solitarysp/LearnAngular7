@@ -1,18 +1,20 @@
-import {Component, Inject, InjectionToken, OnInit} from '@angular/core';
+import {Component, InjectionToken, OnInit, Self, SkipSelf} from '@angular/core';
 import {Logger} from './clazz/logger';
 import {BetterLogger} from './clazz/better-logger';
 import {OldLogger} from './clazz/old-logger';
 import {StudentService} from './service/student-service';
 import {FactoryProviders} from './clazz/factory-providers';
 import {ConfigServiceInitService} from './service/config-service-init.service';
+import {BROWSER_STORAGE, BrowserStorageServiceService} from './browser-storage-service.service';
 
 @Component({
   selector: 'app-di-providers',
   templateUrl: './di-providers.component.html',
-  styleUrls: ['./di-providers.component.scss']
+  styleUrls: ['./di-providers.component.scss'],
+  providers: [BrowserStorageServiceService,
+    {provide: BROWSER_STORAGE, useFactory: () => sessionStorage}]
 })
 export class DiProvidersComponent implements OnInit {
-  APP_CONFIG = new InjectionToken<any>('HERO_DI_CONFIG');
 
   constructor(private  logger: Logger,
               private  betterLogger: BetterLogger,
@@ -20,6 +22,8 @@ export class DiProvidersComponent implements OnInit {
               private  studentService: StudentService,
               private  factoryProviders: FactoryProviders,
               private  configServiceInitService: ConfigServiceInitService,
+              @SkipSelf() private  browserStorageServiceService: BrowserStorageServiceService,
+              @Self() private  sessionStorageService: BrowserStorageServiceService,
   ) {
   }
 
@@ -28,7 +32,13 @@ export class DiProvidersComponent implements OnInit {
     this.betterLogger.log();
     this.oldLogger.logError();
     console.log(this.studentService.name);
-
+    //
+    console.log('localStorage');
+    this.browserStorageServiceService.set('testlocalStorage', 'testlocalStorage');
+    console.log(this.browserStorageServiceService.get('testlocalStorage'));
+    console.log('sessionStorage');
+    this.sessionStorageService.set('testsessionStorage', 'testsessionStorage');
+    console.log(this.sessionStorageService.get('testsessionStorage'));
 
   }
 

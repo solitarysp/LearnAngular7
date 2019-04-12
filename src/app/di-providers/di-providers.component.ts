@@ -4,6 +4,7 @@ import {BetterLogger} from './clazz/better-logger';
 import {OldLogger} from './clazz/old-logger';
 import {StudentService} from './service/student-service';
 import {FactoryProviders} from './clazz/factory-providers';
+import {ConfigServiceInitService} from './service/config-service-init.service';
 
 @Component({
   selector: 'app-di-providers',
@@ -18,6 +19,7 @@ export class DiProvidersComponent implements OnInit {
               private  oldLogger: OldLogger,
               private  studentService: StudentService,
               private  factoryProviders: FactoryProviders,
+              private  configServiceInitService: ConfigServiceInitService,
   ) {
   }
 

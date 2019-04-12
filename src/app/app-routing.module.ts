@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'observables-and-rxjs', loadChildren: './observables-and-rxjs/observables-and-rxjs.module#ObservablesAndRxjsModule'},
   {path: 'customers', loadChildren: './customers/customers.module#CustomersModule'},
   {path: 'config-log', loadChildren: './config-log/config-log.module#ConfigLogModule'},
+  {path: 'di-providers', loadChildren: './di-providers/di-providers.module#DiProvidersModule'},
 
 ];
 const config: ExtraOptions = {

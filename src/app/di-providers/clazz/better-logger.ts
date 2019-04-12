@@ -7,6 +7,6 @@ export class BetterLogger {
   }
 
   log() {
-    console.log(this.logger.logError());
+    this.logger.logError();
   }
 }

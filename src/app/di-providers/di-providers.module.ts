@@ -21,11 +21,12 @@ import {FactoryProviders} from './clazz/factory-providers';
     {provide: StudentService, useValue: {name: 'thành'}},
     {
       provide: FactoryProviders,
-      useFactory: (logger: Logger) => {
-        console.log('factory ', logger.logError());
+      useFactory: (studentService: StudentService) => {
+        console.log('factory ', studentService.name);
         return new FactoryProviders();
       },
-      deps: [Logger]
+      deps: [StudentService],
+      multi: true
     }
   ]
 })

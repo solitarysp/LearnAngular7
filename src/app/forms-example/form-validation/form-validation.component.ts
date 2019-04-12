@@ -3,6 +3,7 @@ import {Student} from '../../share/model/student';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {forbiddenNameValidator, identityRevealedValidator} from '../../share/forbidden-validator.directive';
 import {UniqueAlterEgoValidator} from '../../share/service/user.service';
+import {FormsExampleComponent} from '../forms-example.component';
 
 @Component({
   selector: 'app-form-validation',
@@ -29,7 +30,8 @@ export class FormValidationComponent implements OnInit {
   }, {validators: identityRevealedValidator});
 
 
-  constructor(private fb: FormBuilder, private validator: UniqueAlterEgoValidator) {
+  constructor(private fb: FormBuilder, private validator: UniqueAlterEgoValidator, private formsExampleComponent: FormsExampleComponent) {
+    console.log(this.formsExampleComponent.name)
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-forms-example',
@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forms-example.component.scss']
 })
 export class FormsExampleComponent implements OnInit {
+  name = '12';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -7,12 +7,16 @@ import {FactoryProviders} from './clazz/factory-providers';
 import {ConfigServiceInitService} from './service/config-service-init.service';
 import {BROWSER_STORAGE, BrowserStorageServiceService} from './browser-storage-service.service';
 
+export const TITLE = new InjectionToken<string>('title');
+
 @Component({
   selector: 'app-di-providers',
   templateUrl: './di-providers.component.html',
   styleUrls: ['./di-providers.component.scss'],
   providers: [BrowserStorageServiceService,
-    {provide: BROWSER_STORAGE, useFactory: () => sessionStorage}]
+    {provide: BROWSER_STORAGE, useFactory: () => sessionStorage},
+    {provide: TITLE, useValue: 'Hero of the Month'}
+    ]
 })
 export class DiProvidersComponent implements OnInit {
 

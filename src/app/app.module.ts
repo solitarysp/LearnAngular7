@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {TestMultilBootstrappingComponent} from './test-multil-bootstrapping/test-multil-bootstrapping.component';
 import {ForRootModuleModule} from './forRootModule/for-root-module.module';
+import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {ForRootModuleModule} from './forRootModule/for-root-module.module';
   imports: [
     BrowserModule,
     HttpClientModule,
+    LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR}),
 
     AppRoutingModule,
     // config name root

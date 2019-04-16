@@ -14,7 +14,7 @@ import {HttpResponse} from '@angular/common/http';
 })
 export class HttpClientComponent implements OnInit {
   packages$: Observable<any>;
-  private searchText$ = new Subject<string>();
+  protected searchText$ = new Subject<string>();
 
   constructor(private httpClientService: HttpClientService) {
   }

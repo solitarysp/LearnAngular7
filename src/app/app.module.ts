@@ -11,12 +11,14 @@ import {RequestInterceptorService} from './share/Interceptor/request-interceptor
 import {ResponseInterceptorService} from './share/Interceptor/response-interceptor.service';
 import {ErrorInterceptorService} from './share/Interceptor/error-interceptor.service';
 import {Request2InterceptorService} from './share/Interceptor/request2-interceptor.service';
+import {CachingService} from './share/Interceptor/caching.service';
 
 export const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: Request2InterceptorService, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptorService, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: CachingService, multi: true},
 ];
 
 @NgModule({

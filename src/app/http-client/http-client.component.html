@@ -1,0 +1,7 @@
+<input (keyup)="searchText$.next($event.target.value)" id="name" placeholder="Search"/>
+
+<ul>
+  <li *ngFor="let package of packages$ | async">
+    <i>{{package}}</i>
+  </li>
+</ul>

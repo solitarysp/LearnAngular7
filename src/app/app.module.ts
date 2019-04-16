@@ -3,10 +3,21 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TestMultilBootstrappingComponent} from './test-multil-bootstrapping/test-multil-bootstrapping.component';
 import {ForRootModuleModule} from './forRootModule/for-root-module.module';
 import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
+import {RequestInterceptorService} from './share/Interceptor/request-interceptor.service';
+import {ResponseInterceptorService} from './share/Interceptor/response-interceptor.service';
+import {ErrorInterceptorService} from './share/Interceptor/error-interceptor.service';
+import {Request2InterceptorService} from './share/Interceptor/request2-interceptor.service';
+
+export const httpInterceptorProviders = [
+  {provide: HTTP_INTERCEPTORS, useClass: Request2InterceptorService, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptorService, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true},
+];
 
 @NgModule({
   declarations: [
@@ -22,8 +33,11 @@ import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
     // config name root
     ForRootModuleModule.forRoot({userName: 'thanh'})
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders,
+  ],
   bootstrap: [TestMultilBootstrappingComponent, AppComponent],
 })
 export class AppModule {
 }
+

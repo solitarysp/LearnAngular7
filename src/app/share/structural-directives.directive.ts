@@ -10,7 +10,7 @@ export class StructuralDirectivesDirective {
 
   @Input() set appStructuralDirectives(condition: boolean) {
     if (condition) {
-      console.log(this.viewContainer)
+      console.log(this.viewContainer);
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();

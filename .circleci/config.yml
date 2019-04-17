@@ -12,9 +12,8 @@ jobs:
 
     steps:
       - checkout
-      - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - run: sudo dpkg -i ./google-chrome*.deb
-      - run: sudo apt-get install -f
+      - run: sudo apt-get update
+      - run: sudo apt-get install libgconf2-4 libnss3-1d libxss1
       - run: sudo npm install -g @angular/cli
       - run: sudo npm install
       - run: sudo npm cache clean -f

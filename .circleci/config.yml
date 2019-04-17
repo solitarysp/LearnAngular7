@@ -12,7 +12,6 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo apt-get update
       - run: sudo npm install -g @angular/cli
       - run: sudo npm install
       - run: sudo npm cache clean -f
@@ -21,7 +20,6 @@ jobs:
       - run: sudo npm rebuild node-sass
       - run: sudo npm i node-sass@latest --unsafe-perm
       - run: sudo npm run build
-      - run: sudo apt-get install libxss1 libappindicator1 libindicator7
       - run: wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - run: sudo apt install ./google-chrome*.deb
       - run: sudo ng test --browsers ChromeHeadless --watch=false # run test Headless and exit after running unit test

@@ -29,12 +29,13 @@ module.exports = function (config) {
     browsers: ['Chrome', ],
     customLaunchers: {
       Headless_Chrome: {
-        base: 'Chrome',
+        base: 'ChromeHeadless',
         flags: [
           '--no-sandbox',
           '--disable-gpu'
         ]
       },
+    },
     singleRun: false
   });
 };

@@ -13,10 +13,13 @@ const routes: Routes = [
   {path: 'config-log', loadChildren: './config-log/config-log.module#ConfigLogModule'},
   {path: 'di-providers', loadChildren: './di-providers/di-providers.module#DiProvidersModule'},
   {path: 'http-client', loadChildren: './http-client/http-client.module#HttpClientModule'},
+  {path: 'routing-navigation', loadChildren: './routing-navigation/routing-navigation.module#RoutingNavigationModule'},
 
 ];
 const config: ExtraOptions = {
-  useHash: true
+  useHash: true,
+  // để debug router, chỉ mở ở dev
+  enableTracing: true
 };
 
 @NgModule({

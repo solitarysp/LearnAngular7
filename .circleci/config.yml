@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo /etc/apt/sources.list
+      - run: cd /etc/apt/sources.list
       - run: deb-src http://archive.debian.org/debian/ jessie main
       - run: deb http://security.debian.org jessie/updates main
       - run: deb-src http://security.debian.org jessie/updates main

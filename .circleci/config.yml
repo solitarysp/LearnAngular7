@@ -20,3 +20,4 @@ jobs:
       - run: sudo npm rebuild node-sass
       - run: sudo npm i node-sass@latest --unsafe-perm
       - run: sudo npm run build
+      - run: sudo ng test

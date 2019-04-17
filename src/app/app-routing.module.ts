@@ -15,6 +15,9 @@ const routes: Routes = [
   {path: 'http-client', loadChildren: './http-client/http-client.module#HttpClientModule'},
   {path: 'routing-navigation', loadChildren: './routing-navigation/routing-navigation.module#RoutingNavigationModule'},
 
+  { path: '',   redirectTo: '/directive', pathMatch: 'full' },
+  { path: '**', loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule' }
+
 ];
 const config: ExtraOptions = {
   useHash: true,

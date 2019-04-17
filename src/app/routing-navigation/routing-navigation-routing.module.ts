@@ -6,7 +6,10 @@ import {StudentComponent} from './student/student.component';
 const routes: Routes = [
   {
     path: '', component: RoutingNavigationComponent,
-    children: []
+    data: {title: 'routing-navigation'},
+    children: [
+      {path: 'student/:id/test', component: StudentComponent, pathMatch: 'prefix'}
+    ]
   },
 ];
 

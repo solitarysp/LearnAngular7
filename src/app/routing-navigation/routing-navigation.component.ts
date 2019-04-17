@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-routing-navigation',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutingNavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.data.subscribe(value => {
+      console.log(value);
+    });
+  }
 
   ngOnInit() {
   }

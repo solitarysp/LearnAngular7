@@ -41,7 +41,7 @@ export const httpInterceptorProviders = [
   providers: [
     httpInterceptorProviders,
   ],
-  bootstrap: [ AppComponent],
+  bootstrap: [TestMultilBootstrappingComponent, AppComponent],
 })
 export class AppModule {
 }

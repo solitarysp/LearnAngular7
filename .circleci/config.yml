@@ -12,8 +12,8 @@ jobs:
 
     steps:
       - checkout
-      - run: sudo -i
-      - run: RUN printf "deb http://httpredir.debian.org/debian jessie-backports main non-free\ndeb-src http://httpredir.debian.org/debian jessie-backports main non-free" > /etc/apt/sources.list.d/backports.list
+
+      - run: sudo RUN printf "deb http://httpredir.debian.org/debian jessie-backports main non-free\ndeb-src http://httpredir.debian.org/debian jessie-backports main non-free" > /etc/apt/sources.list.d/backports.list
       - run: sudo apt-get update
       - run: sudo apt-get install libgconf2-4 libnss3-1d libxss1
       - run: sudo npm install -g @angular/cli

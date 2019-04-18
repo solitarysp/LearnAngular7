@@ -1,8 +1,8 @@
-<div>angular-animations</div>
 <ul class="ul-nav-container">
   <li>
-    <h2><a target="_self" rel="noopener">directive</a></h2>
+    <h2><a target="_self" rel="noopener" routerLink="introduction">Introduction</a></h2>
+    <h2><a target="_self" rel="noopener" routerLink="animations-transitions-and-triggers">animations-transitions-and-triggers</a>
+    </h2>
   </li>
 </ul>
-<button [@openClose]="isOpen ? 'open' : 'closed'" (click)="toggle()"> Add Student</button>
-<button [@openCloseVip] (click)="toggle()" *ngIf="isOpen">Chạy khi elemetn có sự thay đổi ẩn hiển...</button>
+<router-outlet></router-outlet>

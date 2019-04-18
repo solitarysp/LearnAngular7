@@ -7,6 +7,11 @@ const routes: Routes = [
     path: '',
     component: AngularAnimationsComponent,
     children: [
+      {path: 'introduction', loadChildren: './introduction/introduction.module#IntroductionModule'},
+      {
+        path: 'animations-transitions-and-triggers',
+        loadChildren: './animations-transitions-and-triggers/animations-transitions-and-triggers.module#AnimationsTransitionsAndTriggersModule'
+      },
     ]
   }];
 

@@ -1,0 +1,6 @@
+<p>
+  introduction works!
+</p>
+
+<button [@openClose]="isOpen ? 'open' : 'closed'" (click)="toggle()"> Add Student</button>
+<button [@openCloseVip] (click)="toggle()" *ngIf="isOpen">Chạy khi elemetn có sự thay đổi ẩn hiển...</button>

@@ -14,9 +14,10 @@ const routes: Routes = [
   {path: 'di-providers', loadChildren: './di-providers/di-providers.module#DiProvidersModule'},
   {path: 'http-client', loadChildren: './http-client/http-client.module#HttpClientModule'},
   {path: 'routing-navigation', loadChildren: './routing-navigation/routing-navigation.module#RoutingNavigationModule'},
+  {path: 'angular-animations', loadChildren: './angular-animations/angular-animations.module#AngularAnimationsModule'},
 
-  { path: '',   redirectTo: '/directive', pathMatch: 'full' },
-  { path: '**', loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule' }
+  {path: '', redirectTo: '/directive', pathMatch: 'full'},
+  {path: '**', loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule'}
 
 ];
 const config: ExtraOptions = {

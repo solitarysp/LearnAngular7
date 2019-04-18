@@ -12,6 +12,7 @@ import {ResponseInterceptorService} from './share/Interceptor/response-intercept
 import {ErrorInterceptorService} from './share/Interceptor/error-interceptor.service';
 import {Request2InterceptorService} from './share/Interceptor/request2-interceptor.service';
 import {CachingService} from './share/Interceptor/caching.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: Request2InterceptorService, multi: true},
@@ -28,6 +29,8 @@ export const httpInterceptorProviders = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+
     HttpClientModule,
     LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.ERROR}),
     HttpClientXsrfModule.withOptions({

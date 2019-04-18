@@ -22,7 +22,7 @@ const routes: Routes = [
 const config: ExtraOptions = {
   useHash: true,
   // để debug router, chỉ mở ở dev
-  enableTracing: true
+  // enableTracing: true
 };
 
 @NgModule({

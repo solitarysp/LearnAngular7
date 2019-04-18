@@ -1,3 +1,8 @@
-<p>
-  animations-transitions-and-triggers works!
-</p>
+<div>
+  <div>
+    a transition of open => * applies when the element's state changes from open to anything else.
+  </div>
+  <button [@openClose]="isOpen ? 'open' : 'closed'" (click)="toggle()">click</button>
+  <button [@voidandasterisk] *ngIf="isOpen">voidandasterisk</button>
+  <button class="hero" [@filterAnimation]="heroTotal" >voidandasterisk {{isOpen}}</button>
+</div>

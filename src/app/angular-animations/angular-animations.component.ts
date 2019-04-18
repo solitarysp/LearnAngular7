@@ -31,20 +31,11 @@ import {
     ]),
     trigger('openCloseVip', [
       transition(':enter', [
-        style({
-          height: '200px',
-          opacity: 1,
-          backgroundColor: 'yellow'
-        }),
+        style({transform: 'translateX(-100%)'}),
         animate('1s 0.2s ease-in')
       ]),
       transition(':leave', [
-        style({
-          height: '100px',
-          opacity: 0.5,
-          backgroundColor: 'green'
-        }),
-        animate('1s 0.2s ease-in')
+        animate('1s 0.2s ease-in', style({transform: 'translateX(-100%)'}))
       ]),
     ]),
   ]

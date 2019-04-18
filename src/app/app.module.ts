@@ -19,7 +19,7 @@ export const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptorService, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: CachingService, multi: true},
-];
+];  
 
 @NgModule({
   declarations: [

@@ -16,7 +16,7 @@ export const TITLE = new InjectionToken<string>('title');
   providers: [BrowserStorageServiceService,
     {provide: BROWSER_STORAGE, useFactory: () => sessionStorage},
     {provide: TITLE, useValue: 'Hero of the Month'}
-    ]
+  ]
 })
 export class DiProvidersComponent implements OnInit {
 

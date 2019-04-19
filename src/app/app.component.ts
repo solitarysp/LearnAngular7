@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -8,7 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AppComponent {
   title = 'learn-angular7';
-
+  @HostBinding('@.disabled')
+  public animationsDisabled = false;
   constructor(private router: Router) {
   }
 

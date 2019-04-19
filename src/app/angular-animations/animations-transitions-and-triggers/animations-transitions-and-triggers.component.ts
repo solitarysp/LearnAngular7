@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-animations-transitions-and-triggers',
@@ -37,11 +37,35 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         animate('0.5s', style({transform: 'translateX(-100%)'}))
       ]),
     ]),
+    trigger('Keyframes', [
+      // ...
+      transition('void => *', [
+        style({
+          height: '300px',
+          opacity: 0.5,
+          backgroundColor: 'green'
+        }),
+        animate('1s', keyframes([
+          style({backgroundColor: 'blue'}),
+          style({backgroundColor: 'red'}),
+          style({backgroundColor: 'orange'})
+        ]))
+      ]),
+      transition('* => void', [
+        style({
+          height: '100',
+          opacity: 0.5,
+          backgroundColor: 'green'
+        }),
+
+        animate('1s')
+      ]),
+    ]),
 
   ]
 })
 export class AnimationsTransitionsAndTriggersComponent implements OnInit {
-
+  isDisabled = false;
   isOpen = true;
 
   constructor() {
@@ -52,6 +76,15 @@ export class AnimationsTransitionsAndTriggersComponent implements OnInit {
 
   toggle() {
     this.isOpen = !this.isOpen;
+  }
+
+  callBackStart(event: AnimationEvent) {
+    console.log(event);
+  }
+
+  callBackdone(event: AnimationEvent) {
+    console.log(event);
+
   }
 
 }

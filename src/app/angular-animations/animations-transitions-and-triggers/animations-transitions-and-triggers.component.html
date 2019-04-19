@@ -1,8 +1,35 @@
-<div>
+<div [@.disabled]="isDisabled">
   <div>
     a transition of open => * applies when the element's state changes from open to anything else.
   </div>
   <button [@openClose]="isOpen ? 'open' : 'closed'" (click)="toggle()">click</button>
-  <button [@voidandasterisk] *ngIf="isOpen">voidandasterisk</button>
-  <button class="hero" [@filterAnimation]="heroTotal" >voidandasterisk {{isOpen}}</button>
+  <button class="hero">voidandasterisk {{isOpen}}</button>
+</div>
+
+<div>
+  <div>
+    Animation callbacks
+  </div>
+  <button
+    [@openClose]="isOpen ? 'open' : 'closed'"
+    (click)="toggle()"
+    (@openClose.start)="callBackStart($event)"
+    (@openClose.done)="callBackdone($event)"
+  >click
+  </button>
+
+</div>
+<div>
+  <div>
+    Keyframes
+  </div>
+  <div>
+    Chuyển màu liên tục trong vài giây
+    <button
+      (click)="toggle()"
+    >click
+    </button>
+    <button [@Keyframes] *ngIf="isOpen">Keyframes</button>
+  </div>
+
 </div>

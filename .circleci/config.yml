@@ -20,5 +20,4 @@ jobs:
       - run: sudo npm rebuild node-sass
       - run: sudo npm i node-sass@latest --unsafe-perm
       - run: sudo npm run build
-      - run: sudo npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
     #  - run: sudo ng test --browsers ChromeHeadless --watch=false # run test Headless and exit after running unit test

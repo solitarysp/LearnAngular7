@@ -50,7 +50,7 @@ export class PracticalObservableUsageComponent implements OnInit {
       .pipe(this.backoff(3, 2500))
       .subscribe(data => {
         console.log('error');
-      });
+      }); 
   }
 
   backoff(maxTries, ms) {
